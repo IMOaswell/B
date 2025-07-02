@@ -1,0 +1,31 @@
+# .github/workflows/push-to-repo-b.yml
+name: Sync Subfolder to Repo A
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'this/is/subfolder/**'
+
+jobs:
+  push_subfolder_to_repo_a:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
+
+    steps:
+      - name: Checkout Repository A
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push 'this/is/subfolder' to Repository A
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          source: "this/is/subfolder"
+          destination_repo: "IMOaswell/A"
+          target_branch: "master"
+          commit_message: "Push from IMOaswell/B"
+          force: true # often needed for syncs
+
