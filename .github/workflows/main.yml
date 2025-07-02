@@ -9,6 +9,6 @@ jobs:
         source_repo: 'IMOitself/A'
         destination_repo: 'IMOitself/B'
         subfolder_path: '.'
-        username: ${{ github.actor }}
+        username: IMOaswell
     secrets:
-        gh_pat: ${{ secrets.GITHUB_TOKEN }}
+        gh_pat: ${{ secrets.GH_PAT }}
