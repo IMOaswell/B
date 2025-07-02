@@ -23,9 +23,6 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GH_PAT }}
-          source: "this/is/subfolder"
-          destination_repo: "IMOaswell/A"
-          target_branch: "master"
-          commit_message: "Push from IMOaswell/B"
-          force: true # often needed for syncs
+          directory: "this/is/subfolder"
+          repository: "IMOaswell/A"
 
