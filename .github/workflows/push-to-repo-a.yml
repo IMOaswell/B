@@ -1,4 +1,3 @@
-# .github/workflows/push-to-repo-b.yml
 name: Sync Subfolder to Repo A
 
 on:
@@ -11,14 +10,13 @@ on:
 jobs:
   push_subfolder_to_repo_a:
     runs-on: ubuntu-latest
-    if: github.actor != 'github-actions[bot]'
-
+    
     steps:
-      - name: Checkout Repository A
+      - name: Checkout Repository B
         uses: actions/checkout@v4
 
       - name: Push 'this/is/subfolder' to Repository A
-        uses: danmindru/push-files-to-another-repository@1.0.1
+        uses: IMOitself/repo-missile@9a1c7667195cccbe0ebee95532c2ab1236c4fb2d
         env:
           API_TOKEN_GITHUB: ${{ secrets.GH_PAT }}
         with:
@@ -27,4 +25,3 @@ jobs:
           destination-repository: 'A'
           destination-directory: 'this/is/subfolder'
           commit-email: 'IMOaswell@users.noreply.github.com'
-
